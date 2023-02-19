@@ -22,15 +22,13 @@ export class LndWsInvoiceWatcher extends EventEmitter implements ILndInvoiceWatc
             }
         });
 
-        ws.on('open', function() {
-            ws.send(JSON.stringify({ settle_index: 5 }));
-        });
         ws.on('error', function(err) {
             console.log(`Error: ${err}`);
         });
         ws.on('message', (body) => {
             const parsed: { result: ILndInvoice } = JSON.parse(body.toString());
-            this.emit('settled', parsed.result);
+            if (parsed.result.state === 'SETTLED')
+                this.emit('settled', parsed.result);
         });
 
     }
