@@ -1,5 +1,5 @@
 export interface ILndRestClientConfig {
     host: string;
-    readonlyMacaroonPath: string;
+    macaroonPath: string;
     certPath: string;
 }
