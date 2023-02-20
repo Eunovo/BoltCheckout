@@ -4,11 +4,14 @@ import { InvoiceRepo } from "./InvoiceRepo";
 
 @service()
 export class InvoiceService extends CRUDService<Invoice> {
+    private invoiceRepo: InvoiceRepo;
+
     constructor(
         @inject(Observable) observable: Observable,
-        @inject(InvoiceRepo) repo: InvoiceRepo
+        @inject(InvoiceRepo)  repo: InvoiceRepo
     ) {
         super(observable.getObservableFor('invoices'), repo);
+        this.invoiceRepo = repo;
     }
 
     addPayment(invoiceId: string, payment: Invoice['payments'][number]) {
@@ -31,6 +34,11 @@ export class InvoiceService extends CRUDService<Invoice> {
                 status: invoiceStatus
             } as any
         );
+    }
+
+    async getTotalSalesByCurrencies() {
+        const totals = await this.invoiceRepo.aggregateTotalPaymentFor({ 'status.status': 'FULFILLED' });
+        return totals.map((value) => ({ currency: value._id, total: value.totalValue }));
     }
 
 }
