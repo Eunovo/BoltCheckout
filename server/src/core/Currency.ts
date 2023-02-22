@@ -1,3 +1,1 @@
-export enum Currency {
-    millisat = 'millisat'
-}
+export type Currency = 'millisat'

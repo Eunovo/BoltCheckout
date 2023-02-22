@@ -2,7 +2,6 @@ import test from 'ava';
 import express from 'express';
 import request from 'supertest';
 import '../src/config';
-import { Currency } from '../src/core/Currency';
 import { CheckoutController } from '../src/features/checkout/CheckoutController';
 import { StartCheckoutDto } from '../src/features/checkout/StartCheckoutDto';
 import { InvoiceController } from '../src/features/invoices/InvoiceController';
@@ -30,7 +29,7 @@ test.serial('Can create product', async (t) => {
         .post('/products')
         .send({
             name: 'SatoshiDice',
-            prices: [{ currency: Currency.millisat, value: 5000 }]
+            prices: [{ currency: 'millisat', value: 5000 }]
         })
         .expect(200);
     productId = response.body.data;
@@ -46,7 +45,7 @@ test.serial('Can create invoice', async (t) => {
             items: [
                 { productId, quantity: 1 }
             ],
-            currency: Currency.millisat
+            currency: 'millisat'
         } satisfies StartCheckoutDto)
         .expect(200);
     invoiceId = response.body.data.invoiceId;

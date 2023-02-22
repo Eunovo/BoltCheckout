@@ -1,4 +1,4 @@
-import { accessControl, createdAt, enums, field, lastUpdatedAt, model, required } from "@eunovo/superbackend"
+import { accessControl, createdAt, field, lastUpdatedAt, model, required } from "@eunovo/superbackend"
 import { Currency } from "../../core/Currency";
 
 @accessControl('invoice')
@@ -10,7 +10,6 @@ export class Invoice {
     /**
      * All the items in the invoice must use the same currency
      */
-    @enums(Currency)
     @required()
     @field('currency', 'String')
     currency!: Currency;

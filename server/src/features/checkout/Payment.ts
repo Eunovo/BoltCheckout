@@ -1,5 +1,4 @@
 import { inject, service } from "@eunovo/superbackend";
-import { Currency } from "../../core/Currency";
 import { Invoice, PaymentChannel } from "../invoices/InvoiceModel";
 import { InvoiceService } from "../invoices/InvoiceService";
 import { ILndClient, ILndInvoiceWatcher, LndRestClient, LndWsInvoiceWatcher } from "../lnd";
@@ -52,7 +51,7 @@ export class PaymentService {
         if (channel != PaymentChannel.ligthning)
             throw new Error(`Only ligthning payment channels are supported at the moment`);
 
-        if (invoice.currency != Currency.millisat)
+        if (invoice.currency != 'millisat')
             throw new Error(`Currency must be in millisat for lightning payments`);
 
         const { r_hash, payment_request, payment_addr } = await this.lnd.addInvoice({
