@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import '../src/config';
 import { CheckoutController } from "./features/checkout/CheckoutController";
 import { InvoiceController } from "./features/invoices/InvoiceController";
@@ -7,12 +8,13 @@ import { ProductController } from "./features/products/ProductController";
 import { makeRouter } from "./helpers/make-router";
 
 const app = express();
+app.use(cors());
+app.use(express.json());
 const router = makeRouter([
     ProductController,
     CheckoutController,
     InvoiceController
 ]);
-app.use(express.json())
 app.use(router);
 
 app.get('/', async (_req, res) => {
