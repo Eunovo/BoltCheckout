@@ -1,15 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Outlet,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { AddProduct } from './pages/products/AddProduct';
+import { ViewProducts } from './pages/products/ViewProducts';
+import { GET_PRODUCTS } from './api';
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<App />}>
+      <Route path="dashboard" element={<Outlet />}>
+        <Route path="products" element={<Outlet />}>
+          <Route
+            index
+            element={<ViewProducts />}
+            loader={({ params }) => GET_PRODUCTS(params)}
+          />
+          <Route path="add" element={<AddProduct />} />
+        </Route>
+      </Route>
+    </Route>
+  )
+);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
