@@ -14,45 +14,40 @@ export const ProductList: FC<ProductListProps> = ({ products }) => {
     const { enqueueSnackbar } = useSnackbar();
 
     const formatter = new Intl.NumberFormat('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
+        maximumFractionDigits: 0
     });
 
     return <>
-        <Box>
-            <Paper variant='outlined' sx={{ p: 2, mb: 4 }}>
-                <Typography
-                    variant='h6'
-                    component='div'
-                    sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        textAlign: 'left',
-                        columnGap: 2,
-                        width: '100%'
-                    }}
-                >
-                    <Box width='40%'>Product Name</Box>
-                    <Box width='20%'>Price(mSat)</Box>
-                </Typography>
-            </Paper>
-
+        <Box sx={{
+            display: 'grid',
+            gridTemplateColumns: 'auto auto',
+            columnGap: 2,
+            rowGap: 2
+        }}>
             {
                 products.map((product, index) => (
-                    <Paper key={index} variant='outlined' sx={{ p: 2, mb: 2 }}>
-                        <Typography
-                            component='div'
+                    <Paper key={index} variant='outlined'
+                        sx={{ display: 'flex', columnGap: 2, p: 2 }}>
+                        <Box
+                            component={'img'}
+                            src={`${process.env.PUBLIC_URL}/Razer-BlackShark-V2.jpg`}
                             sx={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                textAlign: 'left',
-                                columnGap: 2,
-                                width: '100%'
-                            }}
-                        >
-                            <Box width='40%'>{product.name}</Box>
-                            <Box width='20%'>{formatter.format(product.prices[0].value)}</Box>
-                            <Box sx={{ display: 'flex', width: '40%' }}>
+                                height: 300 - (300 * 1 / 4),
+                                width: 250 - (250 * 1 / 4),
+                                objectFit: 'cover',
+                                borderRadius: '5px',
+                                border: '1px solid #cfcfcf',
+                                p: 1
+                            }} />
+
+                        <Box display='flex' flexDirection='column'>
+                            <Box component={Typography} variant='h6'>
+                                {product.name}
+                            </Box>
+
+                            <Box mt={2}>{formatter.format(product.prices[0].value)} mSat</Box>
+                            
+                            <Box mt='auto'>
                                 <Button
                                     onClick={() => {
                                         copyToClipboard(
@@ -67,7 +62,7 @@ export const ProductList: FC<ProductListProps> = ({ products }) => {
                                     startIcon={<CopyAllOutlined />}
                                 >Buy Link</Button>
                             </Box>
-                        </Typography>
+                        </Box>
                     </Paper>
                 ))
             }

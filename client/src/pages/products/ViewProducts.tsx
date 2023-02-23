@@ -9,36 +9,43 @@ export const ViewProducts = () => {
     return <>
         <Box
             sx={{
-                py: 8, px: 4,
                 backgroundColor: '#f5f5f5'
             }}
         >
             <Box
                 sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    mb: 6
+                    py: 8, px: 4,
+                    maxWidth: 'lg',
+                    mx: 'auto'
                 }}
             >
-                <Typography variant='h2'>
-                    Products
-                </Typography>
-
-                <Button
-                    component={Link}
-                    to='/dashboard/products/add'
-                    sx={{ ml: 'auto' }}
-                    color='primary'
+                <Box
+                    sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        mb: 6
+                    }}
                 >
-                    Add Product
-                </Button>
-            </Box>
+                    <Typography variant='h2'>
+                        Products
+                    </Typography>
 
-            {
-                data.results.length === 0
-                    ? <Alert>No products to show</Alert>
-                    : <ProductList products={data.results} />  
-            }
+                    <Button
+                        component={Link}
+                        to='/dashboard/products/add'
+                        sx={{ ml: 'auto' }}
+                        color='primary'
+                    >
+                        Add Product
+                    </Button>
+                </Box>
+
+                {
+                    data.results.length === 0
+                        ? <Alert>No products to show</Alert>
+                        : <ProductList products={data.results} />
+                }
+            </Box>
         </Box>
     </>
 }
