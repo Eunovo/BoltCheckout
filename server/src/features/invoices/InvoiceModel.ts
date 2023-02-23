@@ -31,6 +31,7 @@ export class Invoice {
         firstName: string;
         lastName: string;
         email: string;
+        deliveryAddress: string;
     };
 
     @required()

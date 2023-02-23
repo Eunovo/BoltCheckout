@@ -11,13 +11,15 @@ import { Cart } from "./Cart";
 const validationSchema = yup.object({
     firstName: yup.string().required(),
     lastName: yup.string().required(),
-    email: yup.string().required().email()
+    email: yup.string().required().email(),
+    deliveryAddress: yup.string().required()
 });
 
 const INITIAL_VALUES: BuyerFormData = {
     firstName: '',
     lastName: '',
-    email: ''
+    email: '',
+    deliveryAddress: ''
 }
 
 export const Checkout = () => {

@@ -49,6 +49,18 @@ export const BuyerForm = () => {
                 error={Boolean(errors.email)}
                 margin='normal'
             />
+
+            <TextField
+                label='Delivery Address'
+                placeholder="256 Chapman Road"
+                name="deliveryAddress"
+                value={values.deliveryAddress}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                helperText={errors.deliveryAddress}
+                error={Boolean(errors.deliveryAddress)}
+                margin='normal'
+            />
         </Box>
 
     </>
