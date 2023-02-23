@@ -3,6 +3,7 @@ import { Box, Button, Paper, Typography } from "@mui/material";
 import { Product } from "../../types";
 import { useCopyToClipboard } from "../../hooks";
 import { useSnackbar } from "notistack";
+import { CopyAllOutlined } from "@mui/icons-material";
 
 interface ProductListProps {
     products: Product[];
@@ -63,7 +64,8 @@ export const ProductList: FC<ProductListProps> = ({ products }) => {
                                     sx={{ ml: 'auto' }}
                                     variant='outlined'
                                     size='small'
-                                >Copy Payment Link</Button>
+                                    startIcon={<CopyAllOutlined />}
+                                >Buy Link</Button>
                             </Box>
                         </Typography>
                     </Paper>
