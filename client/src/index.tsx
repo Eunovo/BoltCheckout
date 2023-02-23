@@ -15,6 +15,7 @@ import { ViewProducts } from './pages/products/ViewProducts';
 import { GET_INVOICES, GET_PRODUCTS } from './api';
 import { Checkout } from './pages/checkout/Checkout';
 import { PayInvoice } from './pages/pay/PayInvoice';
+import { ViewInvoices } from './pages/invoices/ViewInvoices';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -35,10 +36,19 @@ const router = createBrowserRouter(
           <Route
             index
             element={<ViewProducts />}
-            loader={({ params }) => GET_PRODUCTS(params)}
+            loader={({ params }) => GET_PRODUCTS({})}
           />
           <Route path="add" element={<AddProduct />} />
         </Route>
+
+        <Route path="invoices" element={<Outlet />}>
+          <Route
+            index
+            element={<ViewInvoices />}
+            loader={({ params }) => GET_INVOICES({})}
+          />
+        </Route>
+
       </Route>
     </Route>
   )
