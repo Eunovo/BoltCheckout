@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Box, Paper, TextField, Typography } from '@mui/material';
 import { PostCheckoutStartData } from '../../types';
+import { ProductName } from './ProductName'; 
 
 export const Cart: FC<{
     items: PostCheckoutStartData['items'],
@@ -14,22 +15,24 @@ export const Cart: FC<{
                 maxWidth: 'sm',
                 columnGap: 2,
                 alignItems: 'stretch',
-                rounded: 'md',
                 p: 2
             }}>
             <Box
                 component={'img'}
-                src={''}
+                src={`${process.env.PUBLIC_URL}/Razer-BlackShark-V2.jpg`}
                 sx={{
-                    height: 250 - (250 * 1/4),
-                    width: 300 - (300 * 1/4),
-                    objectFit: 'cover'
+                    height: 300 - (300 * 1/4),
+                    width: 250 - (250 * 1/4),
+                    objectFit: 'cover',
+                    borderRadius: '5px',
+                    border: '1px solid #cfcfcf',
+                    p: 1
                 }} />
             <Box
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
-                    justifyContent: 'space-between',
+                    justifyContent: 'center',
                     alignItems: 'start',
                     flexGrow: 1
                 }}
@@ -38,12 +41,12 @@ export const Cart: FC<{
                     variant='h6'
                     component='div'
                     align='left'
-                >Name</Typography>
+                ><ProductName productId={item.productId} /></Typography>
 
                 <TextField
                     label='Quantity'
                     type='number'
-                    inputProps={{ inputMode: 'numeric', pattern: '[0-9]*', min: 1 }}
+                    inputProps={{ min: 1 }}
                     value={item.quantity}
                     onChange={(e) => {
                         onChange([{
@@ -52,6 +55,7 @@ export const Cart: FC<{
                         }])
                     }}
                     size='small'
+                    sx={{ mt: 4 }}
                 />
             </Box>
         </Paper>

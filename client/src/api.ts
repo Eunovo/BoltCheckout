@@ -30,7 +30,7 @@ export async function GET_PRODUCTS(params: GetProductsParams) {
         { method: 'GET' }
     );
     const resData = await response.json();
-    return resData satisfies GetProductsRespoonse;
+    return resData as GetProductsRespoonse;
 }
 
 export async function GET_INVOICES(params: GetInvoicesParams) {
