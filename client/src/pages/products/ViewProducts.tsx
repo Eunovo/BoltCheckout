@@ -1,6 +1,7 @@
 import { Alert, Box, Button, Typography } from "@mui/material";
 import { Link, useLoaderData } from "react-router-dom";
 import { GetProductsRespoonse } from "../../types";
+import { Header } from "../../components/Header";
 import { ProductList } from "./ProductList";
 
 export const ViewProducts = () => {
@@ -14,15 +15,18 @@ export const ViewProducts = () => {
         >
             <Box
                 sx={{
-                    py: 8, px: 4,
+                    pt: 2, pb: 8, px: 4,
                     maxWidth: 'lg',
                     mx: 'auto'
                 }}
             >
+                <Header />
+
                 <Box
                     sx={{
                         display: 'flex',
                         alignItems: 'center',
+                        mt: 8,
                         mb: 6
                     }}
                 >
