@@ -19,7 +19,7 @@ export const Cart: FC<{
             }}>
             <Box
                 component={'img'}
-                src={`${process.env.PUBLIC_URL}/Razer-BlackShark-V2.jpg`}
+                src={`${process.env.PUBLIC_URL}/bike.png`}
                 sx={{
                     height: 300 - (300 * 1/4),
                     width: 250 - (250 * 1/4),
