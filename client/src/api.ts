@@ -40,11 +40,11 @@ export async function GET_INVOICES(params: GetInvoicesParams) {
         { method: 'GET' }
     );
     const resData = await response.json();
-    return resData satisfies GetInvoicesResponse;
+    return resData as GetInvoicesResponse;
 }
 
 export async function POST_CHECKOUT_START(data: PostCheckoutStartData) {
-    const response = await fetch(BASE_URL + '/s', {
+    const response = await fetch(BASE_URL + '/checkout/start', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -52,5 +52,5 @@ export async function POST_CHECKOUT_START(data: PostCheckoutStartData) {
         body: JSON.stringify(data),
     });
     const resData = await response.json();
-    return resData satisfies PostCheckoutStartResponse;
+    return resData as PostCheckoutStartResponse;
 }

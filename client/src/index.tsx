@@ -12,11 +12,24 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AddProduct } from './pages/products/AddProduct';
 import { ViewProducts } from './pages/products/ViewProducts';
-import { GET_PRODUCTS } from './api';
+import { GET_INVOICES, GET_PRODUCTS } from './api';
+import { Checkout } from './pages/checkout/Checkout';
+import { PayInvoice } from './pages/pay/PayInvoice';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
+      <Route
+        path='buy/:productId'
+        element={<Checkout />}
+        loader={({ params }) => GET_PRODUCTS({ _id: params.productId })}
+      />
+      <Route
+        path='pay/:invoiceId'
+        element={<PayInvoice />}
+        loader={({ params }) => GET_INVOICES({ _id: params.invoiceId })}
+      />
+
       <Route path="dashboard" element={<Outlet />}>
         <Route path="products" element={<Outlet />}>
           <Route
