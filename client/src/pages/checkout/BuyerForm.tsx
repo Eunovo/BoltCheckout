@@ -6,7 +6,9 @@ export const BuyerForm = () => {
     const { errors, values, handleChange, handleBlur } = useFormikContext<BuyerFormData>();
 
     return <>
-        <Typography sx={{ mb: 4 }}>Enter your contact and delivery information</Typography>
+        <Typography variant="h6" margin='normal'>
+            Enter your contact and delivery information
+        </Typography>
 
         <Box
             display='flex'
@@ -21,7 +23,7 @@ export const BuyerForm = () => {
                 onBlur={handleBlur}
                 helperText={errors.firstName}
                 error={Boolean(errors.firstName)}
-                sx={{ mb: 4 }}
+                margin='normal'
             />
 
             <TextField
@@ -33,7 +35,7 @@ export const BuyerForm = () => {
                 onBlur={handleBlur}
                 helperText={errors.lastName}
                 error={Boolean(errors.lastName)}
-                sx={{ mb: 4 }}
+                margin='normal'
             />
 
             <TextField
@@ -45,7 +47,7 @@ export const BuyerForm = () => {
                 onBlur={handleBlur}
                 helperText={errors.email}
                 error={Boolean(errors.email)}
-                sx={{ mb: 4 }}
+                margin='normal'
             />
         </Box>
 
