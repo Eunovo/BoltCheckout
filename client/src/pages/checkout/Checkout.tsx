@@ -40,8 +40,8 @@ export const Checkout = () => {
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                width: '100vw',
-                height: '100vh'
+                py: 8,
+                minHeight: '100vh'
             }}
         >
 
