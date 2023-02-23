@@ -10,7 +10,8 @@ export const ViewProducts = () => {
     return <>
         <Box
             sx={{
-                backgroundColor: '#f5f5f5'
+                backgroundColor: '#f5f5f5',
+                height: '100vh'
             }}
         >
             <Box
@@ -46,7 +47,7 @@ export const ViewProducts = () => {
 
                 {
                     data.results.length === 0
-                        ? <Alert>No products to show</Alert>
+                        ? <Alert variant='filled' color='info'>No products to show</Alert>
                         : <ProductList products={data.results} />
                 }
             </Box>
