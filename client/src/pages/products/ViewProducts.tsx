@@ -11,7 +11,7 @@ export const ViewProducts = () => {
         <Box
             sx={{
                 backgroundColor: '#f5f5f5',
-                height: '100vh'
+                minHeight: '100vh'
             }}
         >
             <Box
