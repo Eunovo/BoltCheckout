@@ -40,7 +40,12 @@ test.serial('Can create invoice', async (t) => {
     const response = await request(app)
         .post('/checkout/start')
         .send({
-            buyer: { firstName: 'Novo', lastName: 'Novo', email: 'novo@test.com' },
+            buyer: {
+                firstName: 'Novo',
+                lastName: 'Novo',
+                email: 'novo@test.com',
+                deliveryAddress: 'Chapman Road'
+            },
             channel: PaymentChannel.ligthning,
             items: [
                 { productId, quantity: 1 }
