@@ -33,7 +33,7 @@ app.get('/', async (_req, res) => {
     res.json({ message: 'OK', data: app_state });
 });
 
-const APP_PORT = process.env.APP_PORT || 9090;
+const APP_PORT = process.env.APP_PORT || 2020;
 
 app.listen(APP_PORT, () => {
     console.log("Server Started on port", APP_PORT);
