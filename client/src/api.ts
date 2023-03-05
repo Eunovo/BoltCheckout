@@ -6,7 +6,10 @@ import {
     GetInvoicesParams,
     GetInvoicesResponse,
     PostCheckoutStartData,
-    PostCheckoutStartResponse
+    PostCheckoutStartResponse,
+    SignupFormData,
+    PostLoginResponse,
+    LoginFormData
 } from "./types";
 
 const BASE_URL = process.env.REACT_APP_API_URL;
@@ -53,4 +56,26 @@ export async function POST_CHECKOUT_START(data: PostCheckoutStartData) {
     });
     const resData = await response.json();
     return resData as PostCheckoutStartResponse;
+}
+
+export async function POST_SIGNUP(data: SignupFormData) {
+    await fetch(BASE_URL + '/users/signup', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+}
+
+export async function POST_LOGIN(data: LoginFormData) {
+    const response = await fetch(BASE_URL + '/users/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+    const resData = await response.json();
+    return resData as PostLoginResponse;
 }

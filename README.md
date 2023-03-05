@@ -24,6 +24,7 @@ Install dependencies: `yarn install`
 **LND_MACAROON_PATH** Path to LND invoice macaroon  
 **LND_CERT_PATH** Path to LND cert path  
 **APP_PORT** Server port defaults to 2020
+**JWT_SECRET** secret to encode user auth tokens
 
 ### Client Environment Variables
 

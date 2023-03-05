@@ -4,6 +4,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Outlet,
+  redirect,
   Route,
   RouterProvider,
 } from "react-router-dom";
@@ -16,10 +17,21 @@ import { GET_INVOICES, GET_PRODUCTS } from './api';
 import { Checkout } from './pages/checkout/Checkout';
 import { PayInvoice } from './pages/pay/PayInvoice';
 import { ViewInvoices } from './pages/invoices/ViewInvoices';
+import { Signup } from './pages/signup/Signup';
+import { Login } from './pages/login/Login';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
+      <Route index loader={() => redirect('/login')} />
+      <Route
+        path='signup'
+        element={<Signup />}
+      />
+      <Route
+        path='login'
+        element={<Login />}
+      />
       <Route
         path='buy/:productId'
         element={<Checkout />}
